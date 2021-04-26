@@ -1,7 +1,7 @@
 from fastapi import FastAPI, Response, status
 from typing import List
 # from .schemas_counting import Counting, ShowCounting
-from user_data import schemas_counting
+from . import schemas_counting
 from .database_connection import db, doc_collection
 from google.cloud import firestore
 
