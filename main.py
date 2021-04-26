@@ -1,8 +1,8 @@
 from fastapi import FastAPI, Response, status
 from typing import List
 # from .schemas_counting import Counting, ShowCounting
-from . import schemas_counting
-from .database_connection import db, doc_collection
+from user_data.schemas_counting import ShowCounting, Counting
+from user_data.database_connection import db, doc_collection
 from google.cloud import firestore
 
 
@@ -10,8 +10,8 @@ from google.cloud import firestore
 app = FastAPI()
 
 
-@app.post('/update/',status_code = status.HTTP_202_ACCEPTED, response_model = schemas_counting.ShowCounting)
-async def update_or_create(input : schemas_counting.Counting, response :Response):
+@app.post('/update/',status_code = status.HTTP_202_ACCEPTED, response_model = ShowCounting)
+async def update_or_create(input : Counting, response :Response):
     """ This Method Either creates the New Document for name or update the value if name already exists in docuemnts """
     dict_data = {'name':input.name, 'value':input.value }
     doc_ref = doc_collection.document(input.name)
@@ -27,7 +27,7 @@ async def update_or_create(input : schemas_counting.Counting, response :Response
     record = doc_ref.get()
     return record.to_dict()
 
-@app.get('/allposts/',status_code=status.HTTP_200_OK, response_model = List[schemas_counting.ShowCounting])
+@app.get('/allposts/',status_code=status.HTTP_200_OK, response_model = List[ShowCounting])
 def showAlldata():
     all_docs = doc_collection.stream()
     results = []
