@@ -6,3 +6,4 @@ google-cloud-firestore
 typing
 pydantic
 uvloop
+httptools
