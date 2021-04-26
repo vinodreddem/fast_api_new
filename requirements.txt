@@ -1,0 +1,8 @@
+asyncpg
+gunicorn
+fastapi
+uvicorn
+google-cloud-firestore
+typing
+pydantic
+uvloop
