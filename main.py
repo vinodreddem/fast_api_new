@@ -35,6 +35,6 @@ def showAlldata():
         results.append(doc.to_dict())
     return results
 
-@app.get('')
+@app.get("/")
 def index():
     return {"message": "First fast api project"}
