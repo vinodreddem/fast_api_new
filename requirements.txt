@@ -7,3 +7,4 @@ typing
 pydantic
 uvloop
 httptools
+firebase_admin
